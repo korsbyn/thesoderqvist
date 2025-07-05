@@ -1,11 +1,26 @@
 ﻿<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8' />
+    <meta charset="utf-8" />
     <title>Content Manager</title>
-    <script src='https://cdn.jsdelivr.net/npm/netlify-cms@2.10.192/dist/netlify-cms.js'></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/netlify-cms@2.15.72/dist/netlify-cms.js"></script>
   </head>
   <body>
-    <div id='nc-root'></div>
+    <div id="nc-root"></div>
+    <script>
+      // Initiera Identity och CMS
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', user => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => document.location.href = '/admin/');
+          }
+        });
+        window.netlifyIdentity.init();
+      }
+      const initCMS = () => window.CMS && window.CMS.init();
+      if (document.readyState !== 'loading') initCMS();
+      else document.addEventListener('DOMContentLoaded', initCMS);
+    </script>
   </body>
 </html>
