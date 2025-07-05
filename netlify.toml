@@ -5,3 +5,7 @@
 [context.production.environment]
   GIT_SUBMODULE_STRATEGY = "none"
   HUGO_VERSION = "0.124.1"
+[[redirects]]
+  from = "http://thesoderqvist.com/*"
+  to = "https://thesoderqvist.com/:splat"
+  status = 301
