@@ -1,7 +1,7 @@
 ﻿[build]
-  command = "git submodule update --init --recursive && hugo"
+  command = "hugo"
   publish = "public"
 
-[build.environment]
-  GIT_SUBMODULE_STRATEGY = "recursive"
+[context.production.environment]
+  GIT_SUBMODULE_STRATEGY = "none"
   HUGO_VERSION = "0.124.1"
